@@ -78,6 +78,26 @@ public class FrescoHelper {
         loadFrescoImage(imageView, uri, defaultImg, 0, false, loadLocalPath, true, null, null);
     }
 
+    /**
+     * 加载网络图片
+     *
+     * @param imageView
+     * @param uri
+     */
+    public static void loadNet(FrescoImageView imageView, String uri) {
+        loadFrescoImage(imageView, uri, R.drawable.default_bg, 0, false, false, true, null, null);
+    }
+
+    /**
+     * 加载本地图片
+     *
+     * @param imageView
+     * @param uri
+     */
+    public static void loadLocal(FrescoImageView imageView, String uri) {
+        loadFrescoImage(imageView, uri, R.drawable.default_bg, 0, false, true, true, null, null);
+    }
+
     public static void loadFrescoImage(FrescoImageView imageView, String uri, int defaultImg, boolean loadLocalPath, Point size) {
         loadFrescoImage(imageView, uri, defaultImg, 0, false, loadLocalPath, true, size, null);
     }
@@ -163,7 +183,7 @@ public class FrescoHelper {
      * @param listener  回调
      */
     public static void getFrescoImgProcessor(Context context, final String url, final int width, final int height,
-                                              BasePostprocessor processor, final LoadFrescoListener listener) {
+                                             BasePostprocessor processor, final LoadFrescoListener listener) {
 
         ResizeOptions resizeOptions = null;
         if (width != 0 && height != 0) {
