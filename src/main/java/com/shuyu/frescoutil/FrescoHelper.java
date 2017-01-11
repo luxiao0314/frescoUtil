@@ -47,7 +47,7 @@ public class FrescoHelper {
      * @param loadLocalPath 是否本地资源,如果显示R.drawable.xxx,Path可以为null,前提isCircle为true
      * @param isAnima       是否显示GIF动画
      * @param size          是否再编码
-     * @param postprocessor 图像显示处理
+     * @param postprocessor 图像显示处理:高斯模糊，改变形状、颜色、马赛克等
      */
     public static void loadFrescoImage(FrescoImageView imageView, String uri, int defaultImg,
                                        int cornerRadius, boolean isCircle, boolean loadLocalPath, boolean isAnima,
