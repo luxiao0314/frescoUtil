@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -76,9 +77,9 @@ public abstract class BaseProgress extends Drawable {
     @Override
     public void draw(Canvas canvas) {
         // if progress = 0 ,not show
-        if (mProgress == 0 || (int) ((double) ((double) mProgress / (double) mMaxValue) * 100) == 100) {
-            return;
-        }
+//        if (mProgress == 0 || (int) ((double) ((double) mProgress / (double) mMaxValue) * 100) == 100) {
+//            return;
+//        }
         DrawOther(canvas);
         if (mTextShow) {
             DrawText(canvas);
@@ -123,9 +124,10 @@ public abstract class BaseProgress extends Drawable {
                     AddToImageView(true);
             }
         }
-        long origin = mProgress;
         mProgress = level;
-        if (mProgress != 0 && origin != mProgress) {
+        long origin = mProgress;
+//        if (mProgress != 0 && origin != mProgress) {
+        if (level > 0 && level < 10000) {
             invalidateSelf();
             return true;
         } else {
@@ -160,7 +162,6 @@ public abstract class BaseProgress extends Drawable {
     public void injectFresco(@NonNull SimpleDraweeView DraweeView) {
         GenericDraweeHierarchy hierarchy = DraweeView.getHierarchy();
         hierarchy.setProgressBarImage(this);
-        hierarchy.setFadeDuration(500);
     }
 
     /*
@@ -222,7 +223,7 @@ public abstract class BaseProgress extends Drawable {
 
     @Override
     public int getOpacity() {
-        return 0;
+        return PixelFormat.TRANSLUCENT;
     }
 
     public Paint getmTextPaint() {

@@ -1,13 +1,12 @@
-package lib.lhh.fiv.library;
+package progress;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-
-import com.facebook.drawee.drawable.DrawableUtils;
 
 public class ImageLoadingDrawable extends Drawable {
 
@@ -75,7 +74,7 @@ public class ImageLoadingDrawable extends Drawable {
             oval.top = (mYCenter - mRingRadius);
             oval.right = mRingRadius * 2 + (mXCenter - mRingRadius);
             oval.bottom = mRingRadius * 2 + (mYCenter - mRingRadius);
-            canvas.drawArc(oval, -90, ((float) level / mTotalProgress) * 360, false, paint); //
+            canvas.drawArc(oval, -90, ((float) level / mTotalProgress) * 360, true, paint); //
         }
     }
 
@@ -102,6 +101,6 @@ public class ImageLoadingDrawable extends Drawable {
 
     @Override
     public int getOpacity() {
-        return DrawableUtils.getOpacityFromColor(this.mRingPaint.getColor());
+        return PixelFormat.TRANSLUCENT;
     }
 }
